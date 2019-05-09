@@ -24,9 +24,11 @@ def show_my_detail_score(path, my_num):
     my_score = None
     place = 1
     num_at_place = 0
+    sum_of_score = 0
     for idx, student_score_tuple in enumerate(student_score_tuples):
         # tuple idx 0 : student number
         # tuple idx 1 : score
+        sum_of_score = sum_of_score + student_score_tuple[1]
 
         if student_score_tuples[idx-1][1] > student_score_tuple[1]:
             place = place + num_at_place
@@ -38,7 +40,9 @@ def show_my_detail_score(path, my_num):
             my_place = place
             my_score = student_score_tuple[1]
 
-        print('{:02d} place\tnum : {}\tscore : {}'.format(place, student_score_tuple[0], student_score_tuple[1]))
+        print('{:02d} 등\tnum : {}\tscore : {}'.format(place, student_score_tuple[0], student_score_tuple[1]))
+
+    print('평균 점수 : {}'.format(sum_of_score/len(student_score_tuples)))
 
     print('\n당신의 등수 : {}\t당신의 점수 : {}'.format(my_place, my_score))
     my_rate = my_place/len(student_score_tuples)
